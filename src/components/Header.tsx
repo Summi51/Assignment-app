@@ -12,9 +12,9 @@ export default function Header() {
         <div className="flex justify-between items-center h-24">
           
           {/* Logo Section */}
+
           <div className="flex-shrink-0 flex items-center cursor-pointer">
             <div className="relative flex items-center justify-center">
-              {/* Hexagon SVG */}
               <svg width="48" height="54" viewBox="0 0 48 54" fill="none" stroke="black" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24 1L46.5167 14V40L24 53L1.48334 40V14L24 1Z"/>
               </svg>
@@ -25,6 +25,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
+
           <nav className="hidden lg:flex space-x-10 items-center">
             {['WHO WE SERVE', 'SOLUTIONS', 'RESOURCES', 'ABOUT US', 'CONTACT US'].map((item) => (
               <Link
@@ -36,7 +37,8 @@ export default function Header() {
               </Link>
             ))}
 
-            {/* Right Utilities (Search + Dropdowns) */}
+            {/* Right side (Search + Dropdowns) */}
+
             <div className="flex items-center space-x-6 pl-4 border-l border-transparent">
               <button aria-label="Search" className="text-black hover:text-gray-500 transition">
                 <svg className="w-5 h-5 stroke-[2.5px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +62,8 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* Mobile menu button matched exactly to Figma layout */}
+          {/* Mobile menu */}
+
           <div className="lg:hidden flex items-center z-50 relative pr-2">
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -75,7 +78,8 @@ export default function Header() {
           
         </div>
 
-        {/* Mobile Navigation Backdrop */}
+        {/* Mobile Navigation */}
+        
         {isMenuOpen && (
           <div 
             className="lg:hidden fixed inset-0 top-[96px] bg-black/20 z-30 transition-opacity duration-300"
@@ -83,7 +87,6 @@ export default function Header() {
           />
         )}
 
-        {/* Mobile Navigation Menu Drawer (Half Screen Right) */}
         <div className={`lg:hidden fixed top-[96px] right-0 w-[65%] sm:w-[50%] h-[calc(100vh-96px)] bg-white shadow-[-10px_0_30px_rgba(0,0,0,0.1)] flex flex-col items-start pt-8 px-6 sm:px-10 space-y-6 z-40 transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           {['WHO WE SERVE', 'SOLUTIONS', 'RESOURCES', 'ABOUT US', 'CONTACT US'].map((item) => (
             <Link
@@ -95,7 +98,6 @@ export default function Header() {
               {item}
             </Link>
           ))}
-          {/* Mobile Utilities */}
           <div className="flex flex-col space-y-6 pt-2 w-full">
              <span className="text-[12px] sm:text-[13px] font-extrabold text-black tracking-widest cursor-pointer hover:text-[#0055ff]">IND ▾</span>
              <span className="text-[12px] sm:text-[13px] font-extrabold text-black tracking-widest cursor-pointer hover:text-[#0055ff]">ENGLISH ▾</span>

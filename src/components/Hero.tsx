@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// --- Type definition for our Chat Comments ---
 type CommentType = {
   id: string;
   name: string;
@@ -29,7 +28,6 @@ export default function Hero() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // --- CRUD Logic Handlers ---
   const handleSend = () => {
     if (!newMessage.trim()) return;
 
@@ -48,7 +46,6 @@ export default function Hero() {
       setComments([...comments, newComment]);
     }
     setNewMessage("");
-    // Reset textarea height after sending
     if (textareaRef.current) textareaRef.current.style.height = 'auto';
   };
 
@@ -75,9 +72,6 @@ export default function Hero() {
     <section className="relative w-full overflow-hidden bg-[#00338D]">
       <div className="max-w-[1920px] mx-auto min-h-[calc(100vh-80px)] lg:min-h-[850px] flex flex-col lg:flex-row relative pb-10 lg:pb-0">
         
-        {/* Background Image Layer - Made visible on mobile/tablet per explicit user request! 
-            Utilizes CSS mix-blend-overlay and opacity limits on mobile to maintain white text readability against the blue. 
-        */}
         <div className="absolute inset-0 w-full h-full z-0 block">
           <Image
             src="/office_staff_1776347058908.png"
@@ -88,17 +82,13 @@ export default function Hero() {
           />
         </div>
 
-        {/* Blue SVG Mask Layer to create the precise swooping curve shape */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none hidden lg:block">
           <svg 
             className="w-full h-full text-[#00338D]" 
             viewBox="0 0 1000 1000" 
             preserveAspectRatio="none"
           >
-            {/* 
-              The exact perfectly-smooth S-curve matched from the 1st/2nd image.
-              Utilizes a continuous Cubic Bezier curve to aggressively sweep from left to form the blue bottom right constraint floor.
-            */}
+    
             <path 
               fill="currentColor" 
               d="M 0,0 L 320,0 C 500,0 500,860 820,860 L 1000,860 L 1000,1000 L 0,1000 Z" 
@@ -106,7 +96,6 @@ export default function Hero() {
           </svg>
         </div>
 
-        {/* Top Right Figma Comment Badge Trigger (Commented out per user request, do not render) */}
         {false && (
           <div className="absolute hidden lg:flex top-[24%] right-[24%] z-40 animate-fade-in-up">
             <div className="relative cursor-pointer group" onClick={() => setIsChatOpen(!isChatOpen)}>
@@ -118,11 +107,9 @@ export default function Hero() {
                   <Image src="https://i.pravatar.cc/100?img=5" alt="samreen" width={28} height={28} className="rounded-full border-2 border-white relative z-10" />
                 </div>
               </div>
-              {/* The Tail */}
+
               <div className="absolute -bottom-[5px] left-3 w-4 h-4 bg-white border-b-[3px] border-l-[3px] border-[#0055ff] rotate-[-45deg] z-20 transition-transform group-hover:scale-105"></div>
             </div>
-
-            {/* Render the Figma Chat Modal with CRUD capabilities */}
             {isChatOpen && (
               <div 
                 className="absolute top-10 right-0 lg:-left-[420px] bg-white rounded-2xl shadow-2xl w-[420px] z-50 text-black border border-gray-200 flex flex-col p-5 max-h-[85vh] overflow-y-auto animate-fade-in origin-top-right cursor-default select-text" 
@@ -147,7 +134,6 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Comments Thread */}
                 <div className="flex flex-col space-y-7 px-1">
                   {comments.map((comment) => (
                     <div key={comment.id} className="flex items-start space-x-3">
@@ -163,8 +149,7 @@ export default function Hero() {
                             <span className="font-bold text-[14px]">{comment.name}</span>
                             <span className="text-[#a4a4a4] text-[13px]">{comment.time}</span>
                           </div>
-                          
-                          {/* Current User Options Menu (Delete / Edit) */}
+
                           {comment.isCurrentUser && (
                             <div className="relative">
                               <div 
@@ -178,7 +163,6 @@ export default function Hero() {
                                 </svg>
                               </div>
                               
-                              {/* Black Dropdown Menu */}
                               {menuOpenId === comment.id && (
                                 <>
                                   <div className="fixed inset-0 z-40" onClick={() => setMenuOpenId(null)} />
@@ -210,7 +194,6 @@ export default function Hero() {
                   ))}
                 </div>
 
-                {/* Dynamic Reply Input area containing Emoji, Mentions, Attach */}
                 <div className="flex items-start space-x-3 mt-8 px-1 pb-1">
                   <Image src="https://i.pravatar.cc/100?img=5" alt="samreen" width={34} height={34} className="rounded-full mt-1 shrink-0" />
                   <div className="flex-1 bg-[#f5f5f5] rounded-[18px] flex flex-col pt-3 pb-2 px-4 shadow-sm border border-transparent focus-within:border-gray-300 transition-all duration-300 relative">
@@ -229,22 +212,17 @@ export default function Hero() {
                       rows={1}
                     />
 
-                    {/* Toolbar inside the input background */}
                     <div className="flex items-center justify-between w-full pt-1">
                       <div className="flex items-center space-x-3 text-[#757575]">
                         {/* Emoji Icon */}
                         <svg className="w-[18px] h-[18px] cursor-pointer hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        {/* At Symbol Mentions */}
                         <span className="font-bold text-[18px] cursor-pointer hover:text-black transition-colors leading-[0] mt-[-2px]">@</span>
-                        {/* Image Attachment */}
                         <svg className="w-[18px] h-[18px] cursor-pointer hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </div>
-
-                      {/* Submit Arrow (Glows blue when text is entered) */}
                       <button 
                         onClick={handleSend}
                         disabled={!newMessage.trim()}
@@ -278,8 +256,7 @@ export default function Hero() {
             <p className="text-[#a4bfea] text-sm sm:text-[15px] leading-relaxed mb-12 max-w-[26rem] font-light tracking-wide">
               by fostering inclusivity, encouraging growth, promoting collaboration, valuing diversity, supporting innovation, and building trust for shared success.
             </p>
-            
-            {/* LETS CONNECT Slanted Button */}
+
             <Link 
               href="#contact"
               className="relative inline-flex items-center px-6 py-3.5 bg-[#FF5A00] hover:bg-[#ff6b00] transition-colors w-fit group"
@@ -300,7 +277,6 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Floating Avatars Bottom Right */}
         <div className="absolute bottom-8 right-6 lg:bottom-12 lg:right-28 z-20 flex items-center space-x-3 pointer-events-auto">
           <div className="flex -space-x-3 items-center">
             {[14, 15, 12].map((i) => (

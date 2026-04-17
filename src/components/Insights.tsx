@@ -29,13 +29,14 @@ export default function Insights() {
 
       <div className="max-w-[1928px] mx-auto w-full px-6 md:px-[60px] xl:pl-[384px] xl:pr-[100px] relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
         
-        {/* INSPIRATION & INSIGHTS Floating Badge mapped perfectly to exactly below the ABOUT FIRM column! */}
         <div className="hidden xl:flex absolute left-[93px] top-0 bg-[#EFEFEF] w-[206px] h-[206px] rounded-[24px] z-20 flex-col justify-center pl-[32px] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
           <span className="text-black font-black text-[18px] tracking-[0.05em] mb-1 leading-[1.3] uppercase pr-4">INSPIRATION &</span>
           <span className="text-black font-black text-[18px] tracking-[0.05em] leading-[1.3] uppercase">INSIGHTS</span>
         </div>
 
-        {/* Center Column (List) */}
+        {/* Center Column List */}
+
+
         <div className="flex-1 w-full flex flex-col justify-start xl:max-w-[567px] pt-4">
           {listItems.map((item, idx) => (
             <div key={idx} className="flex flex-col w-full group cursor-pointer">
@@ -49,8 +50,8 @@ export default function Insights() {
                 </p>
               </div>
 
-              {/* Divider Line */}
-              {/* The first divider is Blue, matching the Figma prototype. The rest are gray. */}
+              {/* Divider Line list */}
+
               {idx < listItems.length - 1 && (
                 <div className={`w-full h-[1px] mb-6 ${item.active ? 'bg-[#00338D]' : 'bg-[#D1D1D1]'}`}></div>
               )}
@@ -60,11 +61,8 @@ export default function Insights() {
             </div>
           ))}
         </div>
-
-        {/* Right Column (Images) - Beautifully responsive grid/stack */}
         <div className="flex-[1.4] w-full flex flex-col gap-6 mt-12 lg:mt-0">
           
-          {/* Main Wide Image Card */}
           <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[380px] rounded-[24px] overflow-hidden shadow-xl group cursor-pointer">
             <Image
               src="/professional_lifestyle_1776347094754.png"
@@ -79,9 +77,9 @@ export default function Insights() {
               </span>
             </div>
           </div>
+          
 
           <div className="flex flex-col sm:flex-row gap-6 h-auto lg:h-[220px]">
-            {/* Operations Pill */}
             <div className="flex-1 relative h-[300px] sm:h-auto rounded-[24px] overflow-hidden shadow-xl group cursor-pointer bg-gray-900">
                <Image
                 src="/office_staff_1776347058908.png"
@@ -96,7 +94,6 @@ export default function Insights() {
               </div>
             </div>
 
-            {/* Growth & Expansion Pill */}
              <div className="flex-1 relative h-[300px] sm:h-auto rounded-[24px] overflow-hidden shadow-xl group cursor-pointer bg-gray-900">
                <Image
                 src="/glass_building_1776347079016.png"
