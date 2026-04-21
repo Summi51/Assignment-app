@@ -15,7 +15,6 @@ export default function Header() {
           {/* Logo Section */}
 
           <div className="flex-shrink-0 flex items-center cursor-pointer">
-<<<<<<< HEAD
             <Image
               src="/demo-logo.svg"
               alt="Demo Logo"
@@ -28,21 +27,6 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8 items-center">
-=======
-            <div className="relative flex items-center justify-center">
-              <svg width="48" height="54" viewBox="0 0 48 54" fill="none" stroke="black" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 1L46.5167 14V40L24 53L1.48334 40V14L24 1Z"/>
-              </svg>
-              <span className="absolute font-bold text-[10px] tracking-widest text-black mt-0.5">
-                DEMO
-              </span>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-
-          <nav className="hidden lg:flex space-x-10 items-center">
->>>>>>> 9a7968369cce200855f9f5ce205249a3abf612ee
             {['WHO WE SERVE', 'SOLUTIONS', 'RESOURCES', 'ABOUT US', 'CONTACT US'].map((item) => (
               <Link
                 key={item}
@@ -53,14 +37,8 @@ export default function Header() {
               </Link>
             ))}
 
-<<<<<<< HEAD
             <div className="flex items-center space-x-6 pl-4">
               {/* Bolder Search Icon */}
-=======
-            {/* Right side (Search + Dropdowns) */}
-
-            <div className="flex items-center space-x-6 pl-4 border-l border-transparent">
->>>>>>> 9a7968369cce200855f9f5ce205249a3abf612ee
               <button aria-label="Search" className="text-black hover:text-gray-500 transition">
                 <svg className="w-[18px] h-[18px] stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -85,16 +63,9 @@ export default function Header() {
             </div>
           </nav>
 
-<<<<<<< HEAD
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">
             <button
-=======
-          {/* Mobile menu */}
-
-          <div className="lg:hidden flex items-center z-50 relative pr-2">
-            <button 
->>>>>>> 9a7968369cce200855f9f5ce205249a3abf612ee
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="w-8 h-8 flex flex-col justify-center items-center space-y-1"
               aria-label="Menu"
@@ -106,7 +77,6 @@ export default function Header() {
           </div>
         </div>
 
-<<<<<<< HEAD
         {/* Mobile Drawer */}
         <div className={`lg:hidden fixed top-[64px] right-0 w-full h-screen bg-white z-40 transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} border-t border-gray-100`}>
           <div className="flex flex-col p-8 space-y-6">
@@ -120,31 +90,6 @@ export default function Header() {
                 {item}
               </Link>
             ))}
-=======
-        {/* Mobile Navigation */}
-        
-        {isMenuOpen && (
-          <div 
-            className="lg:hidden fixed inset-0 top-[96px] bg-black/20 z-30 transition-opacity duration-300"
-            onClick={() => setIsMenuOpen(false)}
-          />
-        )}
-
-        <div className={`lg:hidden fixed top-[96px] right-0 w-[65%] sm:w-[50%] h-[calc(100vh-96px)] bg-white shadow-[-10px_0_30px_rgba(0,0,0,0.1)] flex flex-col items-start pt-8 px-6 sm:px-10 space-y-6 z-40 transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          {['WHO WE SERVE', 'SOLUTIONS', 'RESOURCES', 'ABOUT US', 'CONTACT US'].map((item) => (
-            <Link
-              key={item}
-              href={`#${item.toLowerCase().replace(/ /g, '-')}`}
-              onClick={() => setIsMenuOpen(false)}
-              className="text-[12px] sm:text-[13px] font-extrabold text-black tracking-[0.1em] hover:text-[#0055ff] transition-colors border-b border-gray-100 w-full pb-4"
-            >
-              {item}
-            </Link>
-          ))}
-          <div className="flex flex-col space-y-6 pt-2 w-full">
-             <span className="text-[12px] sm:text-[13px] font-extrabold text-black tracking-widest cursor-pointer hover:text-[#0055ff]">IND ▾</span>
-             <span className="text-[12px] sm:text-[13px] font-extrabold text-black tracking-widest cursor-pointer hover:text-[#0055ff]">ENGLISH ▾</span>
->>>>>>> 9a7968369cce200855f9f5ce205249a3abf612ee
           </div>
         </div>
       </div>
