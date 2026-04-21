@@ -38,7 +38,7 @@ npm install
 npm run dev
 ```
 
-3. Deployment Link [http://localhost:3000](http://localhost:3000) in your browser
+3. Deployment Link [https://assignment-app-wine.vercel.app/](https://assignment-app-wine.vercel.app/) in your browser
 
 ## Available Scripts
 
